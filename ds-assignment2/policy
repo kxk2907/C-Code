@@ -1,0 +1,28 @@
+// http://download.oracle.com/javase/6/docs/technotes/guides/security/PolicyFiles.html
+// http://download.oracle.com/javase/6/docs/technotes/guides/security/permissions.html
+
+// permissions for the (local) CSCL
+grant codebase "file:${LIBRARY}" {
+  permission java.util.PropertyPermission "*", "read";
+  permission java.net.SocketPermission "*:1024-", "accept, connect";
+};
+
+// permissions for Judge
+grant codebase "file:${JUDGE}/" {
+  permission java.net.SocketPermission "*:1024-", "accept, connect";
+};
+
+// permissions for Team
+grant codebase "file:${TEAM}/" {
+  permission java.net.SocketPermission "*:1024-", "accept, connect";
+};
+
+// permissions for Viewer
+grant codebase "file:${VIEWER}/" {
+  permission java.net.SocketPermission "*:1024-", "accept, connect";
+};
+
+// permissions for Judge
+grant codebase "file:${MONITOR}/" {
+  permission java.net.SocketPermission "*:1024-", "accept, connect";
+};

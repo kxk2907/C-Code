@@ -1,0 +1,15 @@
+# global configuration properties file
+# leading white space is ignored, trailing white space should be avoided
+# check out java.util.Properties.load for the syntax of this file
+
+# the next three definitions must match the local system
+# on Windows (but for CodeBase): all /'s must be \'s
+
+HOME =     C:\\Users\\kbkarthi\\project2\\hwnew
+CSCL =     C:\\Users\\kbkarthi\\project2\\hwnew\\cscl.jar
+JAVA =     C:\\Java\\jre6\\bin\\java
+
+# global shorthands
+
+REGISTRYSERVER =  edu.rit.ds.registry.RegistryServer
+REGISTRYMONITOR = edu.rit.ds.registry.test.RegistryMonitor

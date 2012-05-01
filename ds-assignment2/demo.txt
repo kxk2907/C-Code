@@ -1,0 +1,65 @@
+# shorthands
+
+Common =   C:\\Users\\kbkarthi\\project2\\hwnew\\bin
+Tuples =   C:\\Users\\kbkarthi\\project2\\tuples\\bin
+
+Policy =  -DLIBRARY=CSCL -DMONITOR=Tuples -DJUDGE=Common\\judge \
+		  \-DTEAM=Common\\team -DVIEWER=Common\\viewer \
+          \-Djava.security.policy=C:\\Users\\kbkarthi\\project2\\hwnew\\policy \
+          \-Djava.security.manager=default
+
+Local =    localhost 9901
+
+STeam =    JAVA -cp Common\\common;Common\\team;CSCL Policy Team Local TS
+SJudge =   JAVA -cp Common\\common;Common\\judge;CSCL Policy Judge Local TS
+SViewer =  JAVA -cp Common\\common;Common\\viewer;CSCL Policy Viewer Local TS 275 125
+
+# test script
+
+registry @512,0,512,100   JAVA -cp CSCL Start REGISTRYSERVER
+monitor  @512,50,512,200  JAVA -cp CSCL REGISTRYMONITOR Local
+space    @512,150,512,150 JAVA -cp CSCL Start edu.rit.ds.space.SimpleSpace TS
+#tuples   @512,150,512,150 JAVA -cp Tuples;CSCL Policy Monitor Local TS 2 5
+
+V        @0,350,512,100 SViewer V
+V 9:45
+V B A
+V P Q
+
+A        @512,450,512,100 STeam A
+B        @512,550,512,100 STeam B
+
+JJ       @0,250,512,100 SJudge
+
+B P 10:00
+
+# crash JJ here
+J        @0,250,512,100 SJudge
+
+J false
+B P 10:05
+J true
+B Q 10:10
+
+# may crash V here
+
+VV        @0,350,512,100 SViewer VV
+VV 9:45
+VV B A
+VV P Q
+
+B Q 10:20
+J false
+J true
+
+A P 10:00
+A Q 10:01
+
+# crash A here
+AA       @512,450,512,100 STeam A
+
+AA P 10:15
+AA Q 10:16
+J false
+J true
+J true
