@@ -115,7 +115,7 @@ int main() {
 //	insert(&T, 13);
 //	insert(&T, 13);
 //	insert(&T, 13);
-//	printf("Diameter :: %d\n",diameter(T));
+	printf("Diameter :: %d\n",diameter(T));
 	return 0;
 }
 
