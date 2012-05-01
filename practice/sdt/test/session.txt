@@ -1,0 +1,147 @@
+$ # Starting with an already built project.
+$ ./tli
+declare a
+declare b
+set a 1
+Error: Undeclared variable "1".
+$ cp Fixed/Scanner.cpp . # Fixing the error.
+$ make # Should only recompile the one file.
+g++  -c -o Scanner.o Scanner.cpp
+g++ -o tli tli.o Scanner.o ScannerException.o SymbolTable.o
+$ touch SymbolTable.h # Pretend that I edited this file.
+$ make
+touch Scanner.h
+touch tli.cpp
+g++  -c -o tli.o tli.cpp
+touch Scanner.cpp
+g++  -c -o Scanner.o Scanner.cpp
+touch ScannerException.cpp
+g++  -c -o ScannerException.o ScannerException.cpp
+touch SymbolTable.cpp
+g++  -c -o SymbolTable.o SymbolTable.cpp
+g++ -o tli tli.o Scanner.o ScannerException.o SymbolTable.o
+$ ./tli
+declare a
+declare b
+set a 1
+set b 2
+print a
+1
+print b
+2
+end
+
+Post-Mortem:
+============
+
+a: 1
+b: 2
+$ make clean
+/bin/rm -r Scanner.o ScannerException.o SymbolTable.o tli.o tli.ps tli.zip core 2> /dev/null
+make: [clean] Error 1 (ignored)
+$ ./tli # Executable should still exist.
+end
+
+Post-Mortem:
+============
+
+$ make Scanner.o
+g++  -c -o Scanner.o Scanner.cpp
+$ make tli
+g++  -c -o tli.o tli.cpp
+g++  -c -o ScannerException.o ScannerException.cpp
+g++  -c -o SymbolTable.o SymbolTable.cpp
+g++ -o tli tli.o Scanner.o ScannerException.o SymbolTable.o
+$ make realclean
+/bin/rm -r Scanner.o ScannerException.o SymbolTable.o tli.o core tli.ps tli.zip 2> /dev/null
+make: [clean] Error 1 (ignored)
+/bin/rm -rf tli 
+$ ./tli
+-bash: ./tli: No such file or directory
+$ make
+g++  -c -o tli.o tli.cpp
+g++  -c -o Scanner.o Scanner.cpp
+g++  -c -o ScannerException.o ScannerException.cpp
+g++  -c -o SymbolTable.o SymbolTable.cpp
+g++ -o tli tli.o Scanner.o ScannerException.o SymbolTable.o
+$ ./tli
+end
+
+Post-Mortem:
+============
+
+$ cat input.1    
+declare alpha
+declare beta
+set beta 2
+set alpha 1
+print alpha
+print beta
+declare a
+set a 10
+set alpha 20
+set beta 30
+print a
+print alpha
+print beta
+end
+$ ./tli < input.1
+1
+2
+10
+20
+30
+
+Post-Mortem:
+============
+
+a: 10
+alpha: 20
+beta: 30
+$ make tli.ps
+enscript --color -Ecpp -p tli.ps Scanner.h ScannerException.h SymbolTable.h Scanner.cpp ScannerException.cpp SymbolTable.cpp tli.cpp 
+[ 15 pages * 1 copy ] left in tli.ps
+$ rm tli.ps
+$ make print
+enscript --color -Ecpp -p tli.ps Scanner.h ScannerException.h SymbolTable.h Scanner.cpp ScannerException.cpp SymbolTable.cpp tli.cpp 
+[ 15 pages * 1 copy ] left in tli.ps
+lp tli.ps
+request id is icl_lw5-77 (1 file(s))
+$ cancel icl_lw5-77 # I don't want to waste paper for the demo
+cancel: cancel-job failed: Job #77 is already completed - can't cancel.
+$ make print # It should not repeat the postscript creation.
+lp tli.ps
+request id is icl_lw5-78 (1 file(s))
+$ echo $PRINTER
+$ export PRINTER=fake
+$ make print                                                
+lp tli.ps
+lp: Error - PRINTER environment variable names non-existent destination "fake"!
+make: *** [print] Error 1
+$ make PRINTER=faux print
+lp tli.ps
+lp: Error - PRINTER environment variable names non-existent destination "faux"!
+make: *** [print] Error 1
+$ make tli.zip
+zip tli.zip Scanner.h ScannerException.h SymbolTable.h Scanner.cpp ScannerException.cpp SymbolTable.cpp tli.cpp  Makefile
+  adding: Scanner.h (deflated 50%)
+  adding: ScannerException.h (deflated 52%)
+  adding: SymbolTable.h (deflated 62%)
+  adding: Scanner.cpp (deflated 66%)
+  adding: ScannerException.cpp (deflated 66%)
+  adding: SymbolTable.cpp (deflated 64%)
+  adding: tli.cpp (deflated 36%)
+  adding: Makefile (deflated 60%)
+$ zipinfo tli.zip
+Archive:  tli.zip
+Zip file size: 6748 bytes, number of entries: 8
+-rw-r-----  3.0 unx     1341 tx defN 12-Mar-22 16:47 Scanner.h
+-rw-r-----  3.0 unx     1211 tx defN 12-Mar-22 16:47 ScannerException.h
+-rw-r-----  3.0 unx     2021 tx defN 12-Mar-22 16:47 SymbolTable.h
+-rw-r-----  3.0 unx     3359 tx defN 12-Mar-22 17:04 Scanner.cpp
+-rw-r-----  3.0 unx     1675 tx defN 12-Mar-22 16:47 ScannerException.cpp
+-rw-r-----  3.0 unx     2998 tx defN 12-Mar-22 16:47 SymbolTable.cpp
+-rw-r-----  3.0 unx      401 tx defN 12-Mar-22 16:47 tli.cpp
+-rw-r-----  3.0 unx     1124 tx defN 12-Mar-22 16:45 Makefile
+8 files, 14130 bytes uncompressed, 5500 bytes compressed:  61.1%
+$ 

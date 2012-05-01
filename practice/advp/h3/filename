@@ -1,0 +1,1349 @@
+
+
+Screen reader users, click here to turn off Google Instant.
+Google
+
+Realine in java	×
+
+Instant is on .
+
+Web Images Videos Maps News Shopping Gmail more .
+k.b.karthi@gmail.com | Web History | Settings . | Sign out
+Advanced search
+About 642,000 results (0.24 seconds) 
+Showing results for Readline in java. Search instead for Realine in java
+
+Search Results
+Java 2 Platform SE v1.3.1: Class BufferedReader
+Without buffering, each invocation of read() or readLine() could cause bytes to be read from the file, ... Methods inherited from class java.io.Reader ...
+www.science.uva.nl/ict/ossdocs/java/.../java/io/BufferedReader.html - Cached
+ReadLine.java
+1:import java.io.*; 2: 3:/** 4: This class demonstrates how to read a line of text from the keyboard 5:*/ 6:class ReadLine{ 7: public static void ...
+www.abbeyworkshop.com/.../java/readLine/ReadLine.java.html - Cached - Similar
+Java: Reading a Line of Input
+>java ReadLine. Enter a line of text (type 'quit' to exit): Line 1. You typed: Line 1. Line 2. You typed: Line 2 quit. First, input from the keyboard or ...
+www.abbeyworkshop.com/howto/java/readLine/index.html - Cached - Similar
+Java Practices -> Reading and writing text files
+Jun 5, 2010 ... import java.util.Scanner; /** Read and write a file using an explicit encoding. ... readLine()) != null){ contents.append(line); ...
+www.javapractices.com/topic/TopicAction.do?Id=42 - Cached - Similar
+Java Read File Line By Line,How to Read File Line By Line in Java
+Jan 22, 2010 ... Online java tutorials explains the functions use to read file line by ... Without buffering, each invocation of read() or readLine() could ...
+www.roseindia.net/java/.../java-read-file-line-by-line.shtml - Cached - Similar
+Read interactive command-line input with Java | Java read command ...
+In this tutorial we present a technique that can be used to create Java ... I use it because the readLine() method makes it really easy to deal with the ...
+devdaily.com/java/edu/pj/pj010005/ - Cached
+Java-Readline
+Java-Native-Interface wrapper to readline for every platform supporting the readline, history and termcap libraries. [Open Source, LGPL]
+java-readline.sourceforge.net/ - Cached - Similar
+Java Examples: BufferedReader readLine
+059 java.io.BufferedReader br = new java.io.BufferedReader(isr); 060 String line = null; 061 while ((line = br.readLine()) != null){ 062 buf.append(line); ...
+www.jexamples.com/srchRes/java.io.BufferedReader.readLine - Cached - Similar
+Reading from and Writing to a URLConnection (The Java. Tutorials ...
+readLine()) != null) System.out.println(inputLine); in.close(); } } ... For a Java program to interact with a server-side process it simply must be able to ...
+download.oracle.com/javase/tutorial/.../urls/readingWriting.html - Cached
+BufferedReader (Java 2 Platform SE 5.0)
+java.io.Reader extended by java.io.BufferedReader ... Without buffering, each invocation of read() or readLine() could cause bytes to be read from the file, ...
+cupi2.uniandes.edu.co/javadoc/j2se/1.5.../java/.../BufferedReader.html - Cached
+Showing results for Readline in java. Search instead for the original terms: Realine in java
+
+Searches related to Readline in java
+readline javascript
+readline java example
+readline function java
+readline java file
+getline java
+file java
+readline java code
+use readline java
+Everything
+Images
+Videos
+More
+Search Options
+Show search tools
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Next
+View customizations Search Help Give us feedback
+Google HomeAdvertising ProgramsBusiness SolutionsPrivacyAbout Google
+
+
+Overview 	Package 	  Class 	Use 	Tree 	Deprecated 	Index 	Help 
+JavaTM 2 Platform
+Std. Ed. v1.3.1
+ PREV CLASS   NEXT CLASS	 FRAMES    NO FRAMES
+ SUMMARY:  INNER | FIELD | CONSTR | METHOD	 DETAIL:  FIELD | CONSTR | METHOD
+ java.io 
+ Class BufferedReader
+
+ java.lang.Object
+   |
+     +--java.io.Reader
+             |
+	             +--java.io.BufferedReader
+		     Direct Known Subclasses:
+		     LineNumberReader
+		     public class BufferedReader
+		     extends Reader
+		     Read text from a character-input stream, buffering characters so as to provide for the efficient reading of characters, arrays, and lines.
+
+		     The buffer size may be specified, or the default size may be used. The default is large enough for most purposes.
+
+		     In general, each read request made of a Reader causes a corresponding read request to be made of the underlying character or byte stream. It is therefore advisable to wrap a BufferedReader around any Reader whose read() operations may be costly, such as FileReaders and InputStreamReaders. For example,
+
+		      BufferedReader in
+		         = new BufferedReader(new FileReader("foo.in"));
+			  
+			  will buffer the input from the specified file. Without buffering, each invocation of read() or readLine() could cause bytes to be read from the file, converted into characters, and then returned, which can be very inefficient.
+			  Programs that use DataInputStreams for textual input can be localized by replacing each DataInputStream with an appropriate BufferedReader.
+
+			  Since:
+			  JDK1.1
+			  See Also:
+			  FileReader, InputStreamReader
+			  Fields inherited from class java.io.Reader
+			  lock
+			   
+			   Constructor Summary
+			   BufferedReader(Reader in) 
+			             Create a buffering character-input stream that uses a default-sized input buffer.
+				     BufferedReader(Reader in, int sz) 
+				               Create a buffering character-input stream that uses an input buffer of the specified size.
+					        
+						Method Summary
+						 void	close() 
+						           Close the stream.
+							    void	mark(int readAheadLimit) 
+							              Mark the present position in the stream.
+								       boolean	markSupported() 
+								                 Tell whether this stream supports the mark() operation, which it does.
+										  int	read() 
+										            Read a single character.
+											     int	read(char[] cbuf, int off, int len) 
+											               Read characters into a portion of an array.
+												        String	readLine() 
+													          Read a line of text.
+														   boolean	ready() 
+														             Tell whether this stream is ready to be read.
+															      void	reset() 
+															                Reset the stream to the most recent mark.
+																	 long	skip(long n) 
+																	           Skip characters.
+																		    
+																		    Methods inherited from class java.io.Reader
+																		    read
+																		     
+																		     Methods inherited from class java.lang.Object
+																		     clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait
+																		      
+
+																		      Constructor Detail
+
+																		      BufferedReader
+
+																		      public BufferedReader(Reader in,
+																		                            int sz)
+																					    Create a buffering character-input stream that uses an input buffer of the specified size.
+																					    Parameters:
+																					    in - A Reader
+																					    sz - Input-buffer size
+																					    Throws:
+																					    IllegalArgumentException - If sz is <= 0
+																					    BufferedReader
+
+																					    public BufferedReader(Reader in)
+																					    Create a buffering character-input stream that uses a default-sized input buffer.
+																					    Parameters:
+																					    in - A Reader
+																					    Method Detail
+																					    read
+
+																					    public int read()
+																					             throws IOException
+																						     Read a single character.
+																						     Overrides:
+																						     read in class Reader
+																						     Throws:
+																						     IOException - If an I/O error occurs
+																						     read
+
+																						     public int read(char[] cbuf,
+																						                     int off,
+																								                     int len)
+																										              throws IOException
+																											      Read characters into a portion of an array.
+																											      This method implements the general contract of the corresponding read method of the Reader class. As an additional convenience, it attempts to read as many characters as possible by repeatedly invoking the read method of the underlying stream. This iterated read continues until one of the following conditions becomes true:
+
+																											      The specified number of characters have been read,
+																											      The read method of the underlying stream returns -1, indicating end-of-file, or
+																											      The ready method of the underlying stream returns false, indicating that further input requests would block.
+																											      If the first read on the underlying stream returns -1 to indicate end-of-file then this method returns -1. Otherwise this method returns the number of characters actually read.
+																											      Subclasses of this class are encouraged, but not required, to attempt to read as many characters as possible in the same fashion.
+
+																											      Ordinarily this method takes characters from this stream's character buffer, filling it from the underlying stream as necessary. If, however, the buffer is empty, the mark is not valid, and the requested length is at least as large as the buffer, then this method will read characters directly from the underlying stream into the given array. Thus redundant BufferedReaders will not copy data unnecessarily.
+
+																											      Overrides:
+																											      read in class Reader
+																											      Parameters:
+																											      cbuf - Destination buffer
+																											      off - Offset at which to start storing characters
+																											      len - Maximum number of characters to read
+																											      Returns:
+																											      The number of characters read, or -1 if the end of the stream has been reached
+																											      Throws:
+																											      IOException - If an I/O error occurs
+																											      readLine
+
+																											      public String readLine()
+																											                      throws IOException
+																													      Read a line of text. A line is considered to be terminated by any one of a line feed ('\n'), a carriage return ('\r'), or a carriage return followed immediately by a linefeed.
+																													      Returns:
+																													      A String containing the contents of the line, not including any line-termination characters, or null if the end of the stream has been reached
+																													      Throws:
+																													      IOException - If an I/O error occurs
+																													      skip
+
+																													      public long skip(long n)
+																													                throws IOException
+																															Skip characters.
+																															Overrides:
+																															skip in class Reader
+																															Parameters:
+																															n - The number of characters to skip
+																															Returns:
+																															The number of characters actually skipped
+																															Throws:
+																															IllegalArgumentException - If n is negative.
+																															IOException - If an I/O error occurs
+																															ready
+
+																															public boolean ready()
+																															              throws IOException
+																																      Tell whether this stream is ready to be read. A buffered character stream is ready if the buffer is not empty, or if the underlying character stream is ready.
+																																      Overrides:
+																																      ready in class Reader
+																																      Throws:
+																																      IOException - If an I/O error occurs
+																																      markSupported
+
+																																      public boolean markSupported()
+																																      Tell whether this stream supports the mark() operation, which it does.
+																																      Overrides:
+																																      markSupported in class Reader
+																																      Following copied from class: java.io.Reader
+																																      Returns:
+																																      true if and only if this stream supports the mark operation.
+																																      mark
+
+																																      public void mark(int readAheadLimit)
+																																                throws IOException
+																																		Mark the present position in the stream. Subsequent calls to reset() will attempt to reposition the stream to this point.
+																																		Overrides:
+																																		mark in class Reader
+																																		Parameters:
+																																		readAheadLimit - Limit on the number of characters that may be read while still preserving the mark. After reading this many characters, attempting to reset the stream may fail. A limit value larger than the size of the input buffer will cause a new buffer to be allocated whose size is no smaller than limit. Therefore large values should be used with care.
+																																		Throws:
+																																		IllegalArgumentException - If readAheadLimit is < 0
+																																		IOException - If an I/O error occurs
+																																		reset
+
+																																		public void reset()
+																																		           throws IOException
+																																			   Reset the stream to the most recent mark.
+																																			   Overrides:
+																																			   reset in class Reader
+																																			   Throws:
+																																			   IOException - If the stream has never been marked, or if the mark has been invalidated
+																																			   close
+
+																																			   public void close()
+																																			              throws IOException
+																																				      Close the stream.
+																																				      Overrides:
+																																				      close in class Reader
+																																				      Throws:
+																																				      IOException - If an I/O error occurs
+																																				      Overview 	Package 	  Class 	Use 	Tree 	Deprecated 	Index 	Help 
+																																				      JavaTM 2 Platform
+																																				      Std. Ed. v1.3.1
+																																				       PREV CLASS   NEXT CLASS	 FRAMES    NO FRAMES
+																																				       SUMMARY:  INNER | FIELD | CONSTR | METHOD	 DETAIL:  FIELD | CONSTR | METHOD
+																																				       Submit a bug or feature
+																																				       For further API reference and developer documentation, see Java 2 SDK SE Developer Documentation. That documentation contains more detailed, developer-targeted descriptions, with conceptual overviews, definitions of terms, workarounds, and working code examples.
+																																				       Java, Java 2D, and JDBC are trademarks or registered trademarks of Sun Microsystems, Inc. in the US and other countries.
+																																				       Copyright 1993-2001 Sun Microsystems, Inc. 901 San Antonio Road
+																																				       Palo Alto, California, 94303, U.S.A. All Rights Reserved.
+
+
+
+
+
+ 	
+
+
+Home  Java SE Tips  java.io  How to Read File in Java 
+ 
+ 	
+Main Menu
+Home
+Java Tutorials
+Book Reviews
+Java SE Tips
+Java ME Tips
+Java EE Tips
+Other API Tips
+Java Applications
+Java Libraries
+Java Games
+Sitemap
+Java Network
+Java Forums
+
+
+
+
+
+ 
+Most Visited Tips
+Java SE Tips
+Java ME Tips
+Java EE Tips
+Other API Tips
+Java Applications
+Java Libraries
+Java Games
+Book Reviews
+Top Rated Tips
+Java SE Tips
+Java ME Tips
+Java EE Tips
+Other API Tips
+Java Applications
+Java Libraries
+Java Games
+Book Reviews
+
+
+Statistics
+Registered Users:	770
+Java SE Tips:	 614
+Java ME Tips:	 201
+Java EE Tips:	 184
+Other API Tips:	 779
+Java Applications:	 298
+Java Libraries:	 209
+Java Games:	 16
+Book Reviews:	
+ 
+ 
+ 	
+How to Read File in Java	 
+User Rating: / 1192 
+PoorBest 
+This code will read the MyFile.txt and print its content on the console. It reads the file line by line in the form of DataInputStream.
+
+package MyProject
+
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+/**
+ * This program reads a text file line by line and print to the console. It uses
+ * FileOutputStream to read the file.
+ * 
+ */
+public class FileInput {
+
+  public static void main(String[] args) {
+
+    File file = new File("C:\\MyFile.txt");
+    FileInputStream fis = null;
+    BufferedInputStream bis = null;
+    DataInputStream dis = null;
+
+    try {
+      fis = new FileInputStream(file);
+
+      // Here BufferedInputStream is added for fast reading.
+      bis = new BufferedInputStream(fis);
+      dis = new DataInputStream(bis);
+
+      // dis.available() returns 0 if the file does not have more lines.
+      while (dis.available() != 0) {
+
+      // this statement reads the line from the file and print it to
+        // the console.
+        System.out.println(dis.readLine());
+      }
+
+      // dispose all the resources after using them.
+      fis.close();
+      bis.close();
+      dis.close();
+
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+}
+
+ Related Tips
+
+A custom combobox editor for use with the EditableComboBox class
+A demonstration of Java2D transformations
+A game of Tic-Tac-Toe that can be played between two client applets
+A Label that uses inline HTML to format its text
+A program to print limits of the primitive types
+A sample of inline DTD definition
+A sample of linked DTD definition
+A sample XML file
+ 
+
+ 	
+
+< Prev	 	 Next >
+
+Page 1 of 0 ( 0 comments )
+You can share your information about this topic using the form below!
+
+Please do not post your questions with this form! Thanks.
+
+
+Name (required)
+ 
+
+E-Mail (required) 
+ 
+Your email will not be displayed on the site - only to our administrator 
+Homepage(optional) 
+ 
+
+
+Comment Enable HTML code :   Yes   No 
+     
+ 
+  
+
+ 
+ 	 	 		 
+ 	 	 	 	 
+ 	 	 
+ 	
+ 
+ 
+ 	 	 
+
+
+
+
+
+Home		 -		About Us		 -		Privacy Policy	
+Copyright 2005 - 2008 www.java-tips.org
+Java is a trademark of Sun Microsystems, Inc.
+
+
+
+Gmail Calendar Web Documents Reader more .
+k.b.karthi@gmail.com |  | Settings | Help | Sign out
+Gmail Logo
+	Search MailSearch the Web	Show search options
+Create a filter
+Mail
+Contacts
+Tasks
+Compose mail
+Inbox
+Priority Inbox
+Starred
+Chats
+Sent Mail
+Drafts (31)
+All Mail
+Bits 2 B-School (19)
+BITS to MSPhd (64)
+Bitsaa (4)
+BITSAA BANGALORE JOBS
+BOA
+Facebook (99)
+Linkedin (42)
+RIT
+Sweetooooooo ....
+ 
+25 more.
+Chat
+
+
+karthikeyan Karur Balu
+Sign into chat
+	Call phone
+	Balli
+	Chandana
+	Chandana Keswarkar
+	CK
+	Deepan PSG
+	Enthu
+	Nipun Sud
+	Raama
+	saptarshi.h.banerjee
+	Sree Prasad
+Invite a friend
+Give Gmail to:
+
+Send Invite 96 left
+Preview Invite
+><
+About these ads
+Vonage - Official Site - www.Vonage.com - Calling Plans $14.99/mo First 3 Mos No Annual Contracts. Sign Up Now!
+  ArchiveReport spamDelete.
+.
+Move to Labels More actions 
+Refresh
+ 1 - 100 of 3889 Older .  Oldest »
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Available Balance. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	11:28 am
+		
+RIT Computer Account Man.
+RIT
+ 
+Your RIT Account password is expiring soon. - Greetings, The password for your RIT Computer Account, kxk2907, is due to expire in 2 day(s .
+ 	6:41 am
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Debit Card Charge Made Online, by Phone, or Mail. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	3:19 am
+		
+iTunes
+Fall TV Spotlight: Raising Hope, My Generation, The Event, Modern Family, Glee, and More. - iTunes Fall TV Spotlight Fall TV has begun with a host of exciting new shows. See how the .
+ 	Sep 24
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Available Balance. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	Sep 24
+		
+Citibank India
+Extra Savings in Landmark. Powered by Citi.. - This communication is intended for Customer with Credit Card no. ending with 8014 Your Card no .
+ 	Sep 24
+		
+rit_production
+Standard Notification. - Karthikeyan Karur Balu, A credit card payment for TigerBucksFlex in the amount of $100.00 was .
+ 	Sep 24
+		
+iss
+RIT
+ 
+RIT Global Leadership Program: Apply Today, applications due online October 1, 2010!. - RIT Global Leadership Program: Apply Today, applications due online October 1, 2010! ATTTENTION .
+ 	Sep 24
+		
+Daniel Stafford
+RIT
+ 
+Welcome to grad students in GCCIS. - Forwarded on behalf of Yamin Al Mousa, GCCIS Graduate Student Advisory Committee. Please contact .
+ 	Sep 24
+		
+RIT Message Center
+RIT
+ 
+Global Leadership Program. - RIT Global Leadership Program: Apply Today, applications due online October 1, 2010! ATTTENTION .
+ 	Sep 24
+		
+Daniel Stafford
+RIT
+ 
+EGS LAN Party Announcement. - Forwarded on behalf of the RIT Electronic Gaming Society. Please contact Kevin at kpc1062@rit.edu .
+ 	Sep 24
+		
+wawics
+RIT
+ 
+4005-740-02 DATA COMM & NETWORKS I. - I have returned your paper proposals (all that I could find a mailbox for.) If it says OK on the .
+ 	Sep 24
+		
+RIT Message Center
+RIT
+ 
+News & Events Daily - Sept. 24. - logo September 24, 2010 bar RIT in the News Small businesses face greater impact from regulations .
+ 	Sep 24
+		
+RIT Computer Account Man.
+RIT
+ 
+Your RIT Account password is expiring soon. - Greetings, The password for your RIT Computer Account, kxk2907, is due to expire in 3 day(s .
+ 	Sep 24
+		
+Gurudev Propmart
+Fresco Homes close to nature. - GURU DEV PROPMART Honest Deal Happy Homes monday 12 september 2010. Fresco homes close to nature .
+ 	Sep 24
+		
+Hans-Peter Bischof
+RIT
+ 
+[grads] Coffee Hour: Usual Time, Usual place - eom. - hp errare human est Dr. H-P. Bischof, Dept. of Computer Science .
+ 	Sep 23
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Available Balance. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	Sep 23
+		
+Citibank India
+Enjoy your Friday night movie with a Complimentary Combo!. - This communication is intended for Customer with Credit Card no. ending with 8014 Your Card no .
+ 	Sep 23
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Debit Card Charge Made Online, by Phone, or Mail. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	Sep 23
+		
+RIT Message Center
+RIT
+ 
+Tonight! Calabria On-Campus Food Truck at Ellingson Hall!. - The Calabria Express Food Truck will be at the Ellingson Hall loop tonight from 10 p.m. - 2 a.m. .
+ 	Sep 23
+		
+me
+voip abstract + problem set 1. - Thanks, Karthikeyan
+	Sep 23
+		
+RIT Message Center
+RIT
+ 
+Innovation Expert Richard Lester at RIT Sept. 28. - Richard Lester Renowned innovation proponent and author Richard Lester will be the third speaker .
+ 	Sep 23
+		
+RIT Message Center
+RIT
+ 
+Global Village HUB Print Center & Post Office. - The Global Village HUB Print Center & Post Office is open for the following regular hours .
+ 	Sep 23
+		
+RIT Message Center
+RIT
+ 
+News & Events Daily - Sept. 23. - logo September 23, 2010 bar RIT in the News Serious Materials CEO headlines Entrepreneurs .
+ 	Sep 23
+		
+RIT Message Center
+RIT
+ 
+The prize drawing is next week--become a Facebook Fan of RIT Information Security today!. - Who will be fan number 4000? We're only about a week away from our Gift Card drawing. Check .
+ 	Sep 23
+		
+Wendy Hutchurson
+RIT
+ 
+Student Volunteer T-Shirts Update!. - Student Volunteer T-Shirts Update Career Fair Fall 2010 We have just learned that the free t .
+ 	Sep 23
+		
+sreeprasad, me (2)
+dude i ll be staying back in college !. - Thanks and many regards, Sreeprasad Govindankutty
+ 	Sep 22
+		
+Bank of America Online S.
+BOA
+ 
+Online statement notification from Bank of America. - To ensure delivery, add onlinestmt@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	Sep 22
+		
+Find Life Partner
+Receive Marriage Proposals. - Receive Marriage Proposals Click here
+ 	Sep 22
+		
+circwml (2)
+RIT
+ 
+RIT Libraries - Study room booking added/changed. - A new entry has been booked, here are the details: https://library.rit.edu/depts/circ/mrbs .
+ 	Sep 22
+		
+Hans-Peter Bischof
+RIT
+ 
+[grads] Fwd: Thesis/dissertation binding information. - Begin forwarded message: > From: Tracey Melville <tjmwml@rit.edu> > .... > Subject .
+	Sep 22
+		
+Tina Sturgis
+RIT
+ 
+[grads] No Graduate Office hours today. - All, I have a meeting all afternoon, therefore I will not be holding my office hour from 2-3pm .
+ 	Sep 22
+		
+RIT Message Center
+RIT
+ 
+Tigers hockey, Oct. 16. - RIT hockey fans encouraged to fill Blue Cross Arena on Oct. 16 RIT fans! Let's pack the Blue .
+ 	Sep 22
+		
+RIT Message Center
+RIT
+ 
+Correction - September Events at Barnes & Noble @ RIT. - Correction * The Curious George Event is on Saturday, September 25th @ 1pm, not Sunday as .
+ 	Sep 22
+		
+RIT Message Center
+RIT
+ 
+Louise Slaughter Visit - October 13, 2010. - President William W. Destler and NTID Interim President James J. DeCaro cordially invite the .
+ 	Sep 22
+		
+RIT Message Center
+RIT
+ 
+News & Events Daily - Sept. 22. - logo September 22, 2010 bar RIT in the News Schumer, Gillibrand announce $2 million grant for .
+ 	Sep 22
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Available Balance. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	Sep 22
+		
+RIT Message Center
+RIT
+ 
+RIT Information Security Advisory--Deaf Lottery and other Online Scams. - RIT Information Security Advisory Scam Watch! RIT Public Safety has reported that a student was .
+ 	Sep 22
+		
+saptarshi.h.banerjee@. (2)
+Chat with saptarshi.h.banerjee@gmail.com (18 lines). - me: Ronny, yes tell me saptarshi.h.banerjee: which is the soft fone for i phone? me: fring .
+	Sep 22
+		
+Susan Phillips
+RIT
+ 
+[All Graduate Students] Thesis/dissertation binding information. - Dear Students, We are pleased to share with you the updated information regarding thesis and .
+	Sep 22
+		
+me .. Sastha, Vivek (8)
+I am connected !!. - Hi, I hope my mail finds you all in good health. I am fine. I have got my phone and internet .
+ 	Sep 22
+		
+Amazon.com
+Amazon.com: Ultra Drop + Scratch Protection for iPhone 4. - Amazon.com More to Explore Are you looking for something in our Computers & Accessories .
+ 	Sep 22
+		
+rafi, me (2)
+Chandu yahoo mail
+ 
+An Excellent Openings with Microsoft (Hyderabad) for C/C++/C# Professionals. - Hi, This is Rafi from Cambio Consulting Pvt Ltd, Hyderabad. This is with regard to job opening .
+ 	Sep 22
+		
+Chandana Keswarkar
+Sweetooooooo ....
+ 
+1
+	Sep 22
+		
+Chandana (2)
+Sweetooooooo ....
+ 
+Chat with Chandana (144 lines). - me: Chandu me: cant u reply ? me: sorry to disturb u .. my mood completely spoilt me: i was just .
+	Sep 22
+		
+RIT Message Center
+RIT
+ 
+Rebecca Skloot visit 9/30. - The RIT Community is preparing to welcome author Rebecca Skloot to Ingle Auditorium on September .
+ 	Sep 21
+		
+net.statement
+Statement Online - INDIANOIL CITIBANK TITANIUM CREDIT CARD. - This communication is intended for Customer with Account no. ending with 8014 Your Card no .
+	Sep 21
+		
+RIT Message Center
+RIT
+ 
+September Events at Barnes & Noble @ RIT!. -  .
+ 	Sep 21
+		
+Reynold Bailey (2)
+RIT
+ 
+[grads] Recruiting for Eye-Tracking experiment - Chance to win a $50 Barnes and Noble g.... - Hi Everyone, I am looking for volunteers to participate in an eye-tracking experiment (see .
+	Sep 21
+		
+Edith Hemaspaandra
+RIT
+ 
+700 homework 3. - Dear students, There was a typo in homework 3. In question 4, it said to come up with an NFA with .
+ 	Sep 21
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Available Balance. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	Sep 21
+		
+RIT Message Center
+RIT
+ 
+News & Events Daily - Sept. 21. - logo September 21, 2010 bar RIT in the News Symposium highlights Chinese cinema Independent .
+ 	Sep 21
+		
+Wendy Hutchurson
+RIT
+ 
+Career Fair Volunteer Confirmation & Information. - Student Volunteer Confirmation & Information Career Fair Fall 2010 Thank you for offering to .
+ 	Sep 21
+		
+Hans-Peter Bischof
+RIT
+ 
+[grads] Masters Project Announcement: RealDB: Low-Overhead Database for Time-Sequenced .... - Masters Project Announcement: RealDB: Low-Overhead Database for Time-Sequenced Data Streams in .
+ 	Sep 21
+		
+RIT Message Center
+RIT
+ 
+Pollution Prevention Week. - P2 This RIT message was sent by the myRIT Message Center to the members subscribed to the .
+ 	Sep 21
+		
+circwml
+RIT
+ 
+Books You Reqeusted. - KARTHIKEYAN KARUR BALU 1907 CRITTENDEN RD APT 5 ROCHESTER, NY 14623 09-21-10 We are pleased to .
+ 	Sep 21
+		
+ClickJobs.com
+Email alert for Jobs - Tuesday, 21st Sep. - Email alert of the day Inbox (0 Messages) Earnings (Rs.0) Job Applications (0 Jobs) Invitations .
+ 	Sep 21
+		
+customercare
+Welcome to Vonage Mobile. - Welcome and thank you for choosing Vonage Mobile. This is to confirm that you have set up your .
+ 	Sep 20
+		
+Gmail Team
+Get through your email faster with Gmail Priority Inbox. - gmail Priority Inbox Beta Welcome to Priority Inbox! By automatically separating out your most .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+North Star Center renamed the MULTICULTURAL CENTER FOR ACADEMIC SUCCESS. - Greetings RIT Community, I hope that you are all experiencing an exciting, and settled, start to .
+ 	Sep 20
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Available Balance. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+RIT Emergency Communication Test. - RIT just conducted a test of RIT Alert and Alertus, the emergency mass notification system. RIT .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+Back to School Special at Hair Techniques!. - Stop by Hair Techniques for our Back-to-School Special! Mention promo code .Back to School .
+ 	Sep 20
+		
+Hans-Peter Bischof
+RIT
+ 
+[grads] Fwd: Entry level opportunity for RIT students. - FYI - Begin forwarded message: > From: "Truitt, Colleen" <CTruitt@hersheys.com .
+	Sep 20
+		
+Manjeet Rege
+RIT
+ 
+[grads] tomorrow: Comp Sc colloquium, 1-1:50pm, "INTEROS: a secure open source web plat.... - DEPARTMENT OF COMPUTER SCIENCE COLLOQUIUM SERIES INTEROS: a secure open source web platform for .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+Planned VPN Maintenance on Wednesday 9/22. - TO: All RIT Students, Faculty, and Staff FROM: Omar Phillips, ITS HelpDesk SUBJECT: Planned VPN .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+Join Us For The Global Village Opening Celebration!. - Join us as we celebrate Global Village . RIT's new residential and commercial complex .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+Community Service Fair. - The RIT Leadership Institute & Community Service Center would like to invite you to the Fall .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+Leadership & Service Fall Kick-Off Event. - RIT Leadership Institute and Community Service Center Fall Kick-Off Event! The goal of the RLI .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+Dining This Week. - For location hours, please visit our website by clicking on the following link, Dining Hours .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+Today! Calabria Express On-Campus Food Truck. - TODAY! Stop by one of the following on-campus locations to grab your favorite street foods from .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+Emergency Communications Test - Today (Mon, Sep 20), 4 pm. - RIT will conduct a test of its emergency communication systems on Monday, September 20, beginning .
+ 	Sep 20
+		
+RIT Message Center
+RIT
+ 
+Gordie's Grand Opening Today!. - Gordon Field House Grand Opening Today! Pick up fresh and healthy grab-and-go meals, snacks, and .
+ 	Sep 20
+		
+me
+Asterisk VoIP Security Webinar. - Check out this video on YouTube: http://www.youtube.com/watch?v=_vHK2EtQWWM&feature .
+ 	Sep 20
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Available Balance. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	Sep 19
+		
+Deepan Srinivasan
+Report that we had to write for the comp arch project. - I couldn't find mine...but I have attached my senior's for reference... -Deepan
+	Sep 19
+		
+Deepan, me (2)
+paper summary 5. - Deepan Srinivasan http://www.deepan.net mail@deepan.net
+	Sep 19
+		
+Karthikeyan Karur Balu
+RIT
+ 
+Lab 2 submitted. - Sun Sep 19 13:21:17 [kxk2907@queeg:~/practice/advp/h2]try hpb-grd lab2-1 Expression.java Copying .
+ 	Sep 19
+		
+Chandana, me (2)
+Sweetooooooo ....
+ 
+Fwd: book required ... - karthi .. can u get this book POWER SYSTEMS ANALYSIS, 2ND EDITION. AUTHOR : ARTHUR R. BERGEN .
+ 	Sep 19
+		
+jwccst
+RIT
+ 
+Hope to see you this afternoon at the (free) comedian!. - Good Morning! I hope to see you this afternoon at the (free) comedian. Take a fun break for an .
+ 	Sep 19
+		
+RIT Events Calendar
+RIT
+ 
+This Week @ RIT (19-SEP-10 to 27-SEP-10). - SUNDAY (09/19/2010) 12:00 PM to 4:00 PM: Beta Bowl Location: Outdoors: Behind Gracies (Grace .
+ 	Sep 19
+		
+McAfee
+Your PC Protection Expires 09/25/2010.. - CURRENT STATUS: EXPIRES 09/25/2010 McAfee Service Notification Warning: Time is running out .
+ 	Sep 18
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Available Balance. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	Sep 18
+		
+Hans-Peter Bischof
+RIT
+ 
+[grads] What to do in Rochester/NY?. - Good Day - 1 how about exploring Rochester's Zoo? 2 how about watching The American http .
+ 	Sep 18
+		
+Bank of America Alert
+BOA
+ 
+Bank of America Alert: Available Balance. - To ensure delivery, add onlinebanking@ealerts.bankofamerica.com to your address book. Exclusively .
+ 	Sep 18
+		
+RIT Message Center
+RIT
+ 
+Richard & Virginia Eisenhart Provost's Award for Excellence in Teaching. - Submit your nominations for the 2010-2011 Richard and Virginia Eisenhart Provost's Award for .
+ 	Sep 17
+		
+me, Manojh (3)
+Your resume please. - Hi da, How are you doing ? I am planning to attend a career fair which is gonna happen this month .
+	Sep 17
+		
+RIT Message Center
+RIT
+ 
+Coming Monday! Calabria Express On-Campus Food Truck!. - Introducing Calabria Express Food Truck! RIT Dining Services' new on-campus food truck .
+ 	Sep 17
+		
+RIT Message Center
+RIT
+ 
+GORDIE'S GRAND OPENING NEXT WEEK!. - Gordon Field House Grand Opening on Monday, September 20 th ! RIT Express Dining takes pride in .
+ 	Sep 17
+		
+Daniel Stafford
+RIT
+ 
+Distinguished Speaker - Philippe Le Hegaret, World Wide Web Consortium. - Please join the faculty and staff of the Information Sciences & Technology (IST) Department .
+ 	Sep 17
+		
+RIT Message Center
+RIT
+ 
+Important Information about Student Insurance. - Reminder: Deadline for enrollment in the RIT student medical and dental plans is Thursday .
+ 	Sep 17
+		
+RIT Message Center
+RIT
+ 
+News & Events Daily - Sept. 17. - logo September 17, 2010 bar RIT in the News Finalists named in NTID president search Three .
+ 	Sep 17
+		
+RIT Message Center
+RIT
+ 
+New Tiger Bucks Location! MicGinny's Sports Pub. - NOW PROUDLY ACCEPTING Fresh Meals Made With The Finest Ingredients! ~ Deluxe Sandwiches .
+ 	Sep 17
+		
+RIT Message Center
+RIT
+ 
+Saturday, 09-18-10 - Bus Stop Relocation. - EFFECTIVE SATURDAY 9/18/2010 ONLY In order to accommodate construction Saturday 9/18/2010, the .
+ 	Sep 17
+		
+RIT Message Center
+RIT
+ 
+Mourning the Loss of William Rago. - In Memory of William Rago We have received the sad news that William Rago, a second-year student .
+ 	Sep 17
+		
+Edith Hemaspaandra
+RIT
+ 
+Homework submissions. - Students, You need to submit your homework using one of the methods listed in the syllabus. So .
+ 	Sep 17
+		
+wawics
+RIT
+ 
+4005-740-02 DATA COMM & NETWORKS I. - Problem set 1 is available on the web site. http://www.cs.rit.edu/~waw/networks/prob1.101.html .
+ 	Sep 16
+		
+RIT Message Center
+RIT
+ 
+NTID Presidential Search Finalists. - To Members of the RIT Community Subject: NTID Presidential Search Finalists On behalf of the .
+ 	Sep 16
+		
+RIT Message Center
+RIT
+ 
+Only two weeks left! Become a fan of the RIT Information Security Facebook page and may.... - Become an RIT Information Security Facebook Fan Today! We're only two weeks away from our .
+ 	Sep 16
+		
+Hans-Peter Bischof
+RIT
+ 
+[grads] Coffee Hour: 1:30pm - Graduate Lab - eom. - hp errare human est Dr. H-P. Bischof, Dept. of Computer Science .
+ 	Sep 16
+  ArchiveReport spamDelete.
+.
+Move to Labels More actions 
+Refresh
+ 1 - 100 of 3889 Older .  Oldest »
+Add your Gmail inbox to the Google homepage.
+You are currently using 2096 MB (27%) of your 7501 MB.
+Last account activity: 22 minutes ago on this computer.  Details
+Gmail view: standard | turn on chat | turn off buzz | older contact manager | basic HTML  Learn more
+©2010 Google - Terms - Privacy Policy - Buzz Privacy Policy - Gmail Blog - Join the Gmail team - Google Home
+
+
+A
+A
+Sun.com
+forums.sun.com
+Oracle Forums > Java Essentials > New To Java >
+
+New To Java - Parsing input from console on the fly with Scanner
+<<   Back to Forum  |   Give us Feedback	
+This topic has 10 replies on 1 page.
+ E-mail this Topic     Watch this topic  
+ Ebodee 
+Posts:25 
+Registered: 1/28/10
+Parsing input from console on the fly with Scanner    
+Jan 29, 2010 12:05 AM 
+  
+
+  
+
+ 
+So I ma playing around with Java again, writing the majority of one of my projects for school computing transitive closure of a relation using arrays... fun stuff. I decide I want to learn something new since I glossed over delimiters when beginning java.
+I want my user to be able to enter a pair of data (2,3) into java and terminate with a carriage return. Only problem is because of my utter lack of information of delimiters and scanner class (poor textbook coverage), I am left to try and fiddle with it and have managed 
+to get only the first and second element entered (2,3) assigned to int a and int b via keyboard.useDelimiter(","). Code snippet is attached.
+
+Alright, so after all this long wind what is my question. How do I use delimiters to parse input from the console such that I can enter data into the program as 2,3 1,2 3,4 4,3 and terminate using some nifty code after entering a carriage return? Maybe I just get myself into these things and should just get the program to run easy mode and be done but I can't keep from learning something new. Please help!
+
+keyboard.useDelimiter(", ");
+
+a = keyboard.nextInt();
+b = keyboard.nextInt();
+
+System.out.println("a = " a " b = " +b);
+ 
+ Melanie_Green 
+Posts:2,344 
+Registered: 3/8/08
+Re: Parsing input from console on the fly with Scanner    
+Jan 29, 2010 12:18 AM (reply 1 of 10)  (In reply to original post ) 
+  
+
+  
+
+ 
+Please use CODE TAGS to highlight your code next time.
+
+If you would like to split input based upon a delimiter, the first thing you need to do is read in a line of input, preferably into a String for processing. From here you can use the split method of String to split for example "2,3" into an array of Strings containing the set ["2", "3"] using the delimiter ','.
+
+Mel
+ 
+ Ebodee 
+Posts:25 
+Registered: 1/28/10
+Re: Parsing input from console on the fly with Scanner    
+Jan 29, 2010 12:33 AM (reply 2 of 10)  (In reply to #1 ) 
+  
+
+  
+
+ 
+Melanie, thank you for your reply. I apologize for not using code tags, I am new to this forum.
+So ok, I my set of numbers read and I am beginning to think that perhaps this is the only way to do this?
+I understand how split() works but my question in why can I not simply use input delimiter on the console for reading 
+input in?
+
+Is it possible to use delimiter on console input directly form the keyboard for a string of inputs delimited directly at the keyboard?
+ 
+ Melanie_Green 
+Posts:2,344 
+Registered: 3/8/08
+Re: Parsing input from console on the fly with Scanner    
+Jan 29, 2010 12:35 AM (reply 3 of 10)  (In reply to #2 ) 
+  
+
+  
+
+ 
+Ebodee wrote:
+Is it possible to use delimiter on console input directly form the keyboard for a string of inputs delimited directly at the keyboard?
+
+Yes definitely, if you are using a Scanner then you can set the delimiter via the setDelimiter() method. Refer the the API for Scanner for more information.
+
+Mel
+ 
+ Ebodee 
+Posts:25 
+Registered: 1/28/10
+Re: Parsing input from console on the fly with Scanner    
+Jan 29, 2010 1:42 AM (reply 4 of 10)  (In reply to #3 ) 
+  
+
+  
+
+ 
+Ok, I got it partially working but scanner is not acting properly and not reading in 1 pieces of my data ( pair of comma and white space separated numbers (2, 3)
+
+Perhaps you can offer my pointers and suggestions.
+
+ Scanner keyboard = new Scanner(System.in).useDelimiter(",\\s* ");
+                 
+          for (i = 0; i <=5; i++)
+        {
+            a = keyboard.nextInt();
+            b =keyboard.nextInt();
+            System.out.println("a = " + a + " b = " + b);
+            x[a][b] = 1;
+ 
+        }
+
+
+If I use as input 1, 3, 2, 1, 2, 4, 3, 5, 4, 2, 4, 5 the scanner hangs on the last 2 (4, 5)
+ 
+ Melanie_Green 
+Posts:2,344 
+Registered: 3/8/08
+Re: Parsing input from console on the fly with Scanner    
+Jan 29, 2010 2:01 AM (reply 5 of 10)  (In reply to #4 ) 
+  
+
+  
+
+ 
+Do you notice your program continues to run when the output is complete or in fact incomplete? This is because the Scanner is waiting for the delimiter to pass the set of numbers.
+
+I changed the delimiter to incorporate the newline and return characters and it seems to work as intended.
+
+"(,\\s* )|\r\n"
+
+
+Mel
+ 
+ Ebodee 
+Posts:25 
+Registered: 1/28/10
+Re: Parsing input from console on the fly with Scanner    
+Jan 29, 2010 2:41 AM (reply 6 of 10)  (In reply to #5 ) 
+  
+
+  
+
+ 
+Well cause I am a dummy mel and why I come here to have someone else write my programs. In all seriousness, this is a rather old, boring, but new topic for me because I only did what I was asked to do in COSC 111 ... use scanner to spit out something for a grade. I suppose now that I want to do something usefull, I need to delve further. If you know a place for noobs like me with loads of info on stuff just washed over by profs and textbooks especially, ESPECIALLY delimiters cause my book has a list like 6 long I would appreciate it and thank you for the help.
+ 
+ Melanie_Green 
+Posts:2,344 
+Registered: 3/8/08
+Re: Parsing input from console on the fly with Scanner    
+Jan 29, 2010 2:48 AM (reply 7 of 10)  (In reply to #6 ) 
+  
+
+  
+
+ 
+Ebodee wrote:
+Well cause I am a dummy mel and why I come here to have someone else write my programs. In all seriousness, this is a rather old, boring, but new topic for me because I only did what I was asked to do in COSC 111 ... use scanner to spit out something for a grade. I suppose now that I want to do something usefull, I need to delve further.
+
+I'm not sure if I'm meant to greet this with open arms or a sword and shield. In other words I have no idea what you just said, semi sounded like an attack, but who knows.
+
+If you know a place for noobs like me with loads of info on stuff just washed over by profs and textbooks especially, ESPECIALLY delimiters cause my book has a list like 6 long I would appreciate it and thank you for the help.
+
+You are on the internet my friend, the biggest library in the universe. Google is an excellent search engine, try typing in some queries, I'm sure you will find enough to read for a lifetime.
+
+Mel
+ 
+ Ebodee 
+Posts:25 
+Registered: 1/28/10
+Re: Parsing input from console on the fly with Scanner    
+Jan 29, 2010 3:07 AM (reply 8 of 10)  (In reply to #7 ) 
+  
+
+  
+
+ 
+just me being honest
+ 
+ Melanie_Green 
+Posts:2,344 
+Registered: 3/8/08
+Re: Parsing input from console on the fly with Scanner    
+Jan 29, 2010 3:15 AM (reply 9 of 10)  (In reply to #8 ) 
+  
+
+  
+
+ 
+Ebodee wrote:
+just me being honest
+
+Honest about what? I did not understand that part of your post.
+
+Mel
+ 
+ Ebodee 
+Posts:25 
+Registered: 1/28/10
+Re: Parsing input from console on the fly with Scanner    
+Jan 29, 2010 12:30 PM (reply 10 of 10)  (In reply to #9 ) 
+  
+
+  
+
+ 
+Honest regarding the fact that most textbooks in computer science claiming to introduce, educate, and inform students in an "Absolute" fashion, if you get my reference or not (Savitch), tend to gloss with a high degree of superfluity most of the nature of the language while incorporating as much fluff and slush that you get, as my professor put it, a text book that does non-stop talking about nothing while missing the fact that covering delimiters and parsing input form the scanner is a topic of interest at a most basic level.
+
+So why do i come to a forum to have Melanie Green instruct me when I paid over $100 bucks for a book? I don't know and all I can say is thank you for your help while realizing that perhaps education today is truly all about self-educating while paying someone else to write on a board or buy a book that is so poor at teaching the basics of the language that I need the internet, a free resource, while paying for my education.
+
+That was perhaps more of a rant from times past when things were different, much different. Anyway, I hope this explains my position and was not intended or to be interpreted as an attack on someone I dialogued with to help me fancy up my program.
+ 
+This topic has 10 replies on 1 page.
+Back to Forum 
+ 
+Read the Developer Forums Code of Conduct 
+
+ Email this Topic 
+
+ Edit this Topic
+Sun Forums
+Welcome
+Login
+Watch List
+Beginners Quick Start
+My Forums
+Feedback
+FAQ
+Code of Conduct
+Search Forums
+	  	
+ 
+Oracle Forums - Starting Sept 24th, 2010, these forums will be read-only. At that time, there will be new forums created at http://forums.oracle.com  to accommodate most of the discussion topics here. For more information on the migration, read the Forums Migration FAQ
+ 
+Forums Statistics
+
+About Sun forums
+Sun Forums is a large collection of user generated discussions. It is here to help you ask questions, find answers, and participate in discussions.
+Check out our guide on Getting started with Sun Forums for a full walkthrough of how to best leverage the benefits of this community.
+ 
+
+ 
+
+
+	
+Oracle Social Media Participation Policy  |  About Sun  |  About This Site  |  Newsletters  |  Contact Us  |  Employment
+How to Buy  |  Licensing  |  Terms of Use  |  Privacy  |  Trademarks 
+ 
+
+ 
+© 2009, Oracle Corporation and/or its affiliates
+	
+A Sun Developer Network Site
+
+Unless otherwise licensed, code in all technical manuals herein (including articles, FAQs, samples) is provided under this License. 
+ 
+ Content Feeds
+
+
+
+
+A
+A
+myCourses allows for instructors and students to interact and access course materials online. A variety of tools are available to instructors to promote interaction and provide resources for the students in their courses.
+
+After logging in, you will be taken to the My Home page where you will find the My Courses listing to access your courses. To the upper right, you will find a link for Help and Resources which contains documentation and training information to help get you started with myCourses. myCourses can only send email messages out, to read your email you will need to access your RIT Emai

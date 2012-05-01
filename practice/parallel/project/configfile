@@ -1,0 +1,14 @@
+cluster GRID implementation using PJ - Parallel Team 11
+logfile /tmp/scheduler.log
+webhost server.para.peibaira.emulab.net
+webport 8080
+schedulerhost localhost
+schedulerport 20617
+frontendhost 155.98.36.157
+backend pc1 1 c1.para.PEIBAIRA.emulab.net /tmp/jdk1.5.0_22/bin/java /tmp/pj.jar
+backend pc2 1 c2.para.PEIBAIRA.emulab.net /tmp/jdk1.5.0_22/bin/java /tmp/pj.jar
+backend pc3 1 c3.para.PEIBAIRA.emulab.net /tmp/jdk1.5.0_22/bin/java /tmp/pj.jar
+backend pc4 1 c4.para.PEIBAIRA.emulab.net /tmp/jdk1.5.0_22/bin/java /tmp/pj.jar
+backend pc5 1 kxk2907@paradise.cs.rit.edu /usr/jdk/jdk1.5.0_17/bin/java /tmp/pj.jar
+backend pc6 1 kxk2907@paradox.cs.rit.edu /usr/jdk/jdk1.5.0_17/bin/java /tmp/pj.jar
+backend pc7 8 kxk2907@glados.cs.rit.edu /usr/bin/java /usr/tmp/pj.jar

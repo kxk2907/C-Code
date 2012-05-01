@@ -1,0 +1,129 @@
+import java.util.Hashtable;
+import java.util.Scanner;
+import java.util.Stack;
+	
+class PointCloud {
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		PointCloud pc = new PointCloud();
+		Hashtable<Integer, Points> allCoordinates = new Hashtable<Integer, Points>();
+		Stack<Points> cloudStack = new Stack<Points>();
+		Hashtable<Integer, Stack<Points>> Clouds = new Hashtable<Integer, Stack<Points>>();
+		Points p1;
+		int number = 0;
+		double dist = Double.valueOf(args[0]);
+		/*for(int i = 1;i<args.length;i = i+3) {
+			Points ptemp = new Points(Double.valueOf(args[i]),Double.valueOf(args[i+1]),Double.valueOf(args[i+2]));
+			allCoordinates.put(number, ptemp);
+			number ++;
+		}*/
+		
+		while(sc.hasNext()) {
+			String temp = sc.nextLine();
+			String[] ptsString = temp.split(" ");
+			Points ptemp = new Points(Double.valueOf(ptsString[0]),
+					Double.valueOf(ptsString[1]),Double.valueOf(ptsString[2]));
+			allCoordinates.put(number, ptemp);
+			number ++;
+		}
+		cloudStack.push(allCoordinates.get(0));
+		Clouds.put(0, cloudStack);
+		for(int i = 1;i<allCoordinates.size();i++) {
+			p1 = allCoordinates.get(i);
+			int matchCloudNumber = -1;
+			Points matchPoint = null;
+			boolean flag = true;
+			for(int j = 0;j<Clouds.size();j++) {
+				Stack<Points> tempCloudStack = new Stack<Points>();
+				if(Clouds.get(j) != null) {
+					tempCloudStack = Clouds.get(j);
+					for(int k = 0;k<tempCloudStack.size();k++) {
+						if(pc.distance(p1, tempCloudStack.elementAt(k)) < dist) {
+							tempCloudStack.push(p1);
+							//Clouds.put(j, tempCloudStack);   seems not required already present
+							flag = false;
+							matchPoint = p1;
+							k = tempCloudStack.size() + 1;
+							//converge;
+						}
+					}	
+					if(!flag) {
+						matchCloudNumber = j;
+						j = Clouds.size() + 1;
+					}
+				}
+			}
+			if(flag) {
+				Stack<Points> tempCloudStackNext = new Stack<Points>();
+				tempCloudStackNext.push(p1);
+				Clouds.put(Clouds.size(),tempCloudStackNext);
+			}
+			else {
+				if(!(matchCloudNumber == -1)) {
+					boolean present = false;
+					for(int p= matchCloudNumber + 1;p<Clouds.size();p++) {
+						Stack<Points> tempCloudStack = new Stack<Points>();
+						tempCloudStack = Clouds.get(p);
+						if(Clouds.get(p) != null) {
+							if(!tempCloudStack.isEmpty()) {
+								for(int k = 0; k<tempCloudStack.size();k++) {
+									if(pc.distance(matchPoint,tempCloudStack.elementAt(k)) < dist) {
+										present = true;
+										k = tempCloudStack.size() + 1;
+									}
+								}
+							}
+						}
+						if(present) {
+							Stack<Points> checkCloudStack = new Stack<Points>();
+							checkCloudStack = Clouds.get(matchCloudNumber);
+							while(!tempCloudStack.isEmpty()) {
+								Points tempRemove = tempCloudStack.pop();
+								checkCloudStack.push(tempRemove);
+							}
+							Clouds.put(matchCloudNumber, checkCloudStack);
+							Clouds.remove(p);
+							present = false;
+						}
+					}
+				}
+			}
+		}
+		int clouds_total = 0;
+		for(int i = 0;i<Clouds.size();i++) {
+			if(Clouds.get(i) != null) {
+				System.out.println("Cloud # : " + clouds_total  + " " + Clouds.get(i).size() );
+				clouds_total ++;
+			}
+			else {
+				break;
+			}
+		}
+		System.out.println("Total Clouds : " + clouds_total);
+	}
+	
+	public double distance (Points p1, Points p2) {
+		double xd = p1.getX() - p2.getX();
+		double yd = p1.getY() - p2.getY();
+		double zd = p1.getZ() - p2.getZ();
+		return(Math.sqrt(xd*xd + yd*yd + zd*zd));
+	}
+}
+
+class Points {
+	double x,y,z;
+	Points(double x,double y, double z){
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+	double getX () {
+		return this.x;
+	}
+	double getY () {
+		return this.y;
+	}
+	double getZ () {
+		return this.z;
+	}
+}

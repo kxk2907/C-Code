@@ -1,0 +1,24 @@
+Sun Apr 17 22:20:08 [kxk2907@queeg:~/practice/parallel/hw2]submit -v jmk-grd hw2 *
+a hw2-1/ 0K
+a hw2-1/hw2q1seq.java 5K
+a hw2-1/hw2q1smp.java 7K
+a hw2-1/readme.txt 1K
+a hw2-2/ 0K
+a hw2-2/hw2q2seq.java 2K
+a hw2-2/hw2q2smp.java 3K
+a hw2-2/readme.txt 1K
+a hw2-3/ 0K
+a hw2-3/hw2q3seq.java 3K
+a hw2-3/hw2q3smp.java 3K
+a hw2-3/readme.txt 1K
+a hw2-4/ 0K
+a hw2-4/hw2q4smp.java 4K
+a hw2-4/hw2q4seq.java 3K
+a hw2-4/readme.txt 2K
+a hw2-4/output_file.txt 1K
+a hw2-5/ 0K
+a hw2-5/hw2q5smp.java 2K
+a hw2-5/hw2q5seq.java 2K
+a hw2-5/readme.txt 1K
+Sun Apr 17 22:20:11 [kxk2907@queeg:~/practice/parallel/hw2]
+

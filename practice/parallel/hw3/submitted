@@ -1,0 +1,46 @@
+a hw3-1/ 0K
+a hw3-1/hw3q1clu.java 3K
+a hw3-1/hw3q1seq.java 2K
+a hw3-1/readme.txt 4K
+a hw3-2/ 0K
+a hw3-2/hw3q2seq.java 3K
+a hw3-2/hw3q2clu.java 4K
+a hw3-2/readme.txt 2K
+a hw3-3/ 0K
+a hw3-3/hw3q3clu.java 3K
+a hw3-3/hw3q3seq.java 2K
+a hw3-3/readme.txt 2K
+a hw3-4/ 0K
+a hw3-4/hw3q4seq.java 3K
+a hw3-4/hw3q4clu.java 6K
+a hw3-4/readme.txt 5K
+a hw3-5/ 0K
+a hw3-5/hw3q5clu.java 3K
+a hw3-5/hw3q5seq.java 3K
+a hw3-5/DNS algorithm explanation.pdf 43K
+a hw3-5/readme.txt 8K
+Mon May 02 18:29:24 [kxk2907@queeg:~/practice/parallel/hw3]submit -v jmk-grd hw3 *
+a hw3-1/ 0K
+a hw3-1/hw3q1clu.java 3K
+a hw3-1/hw3q1seq.java 2K
+a hw3-1/readme.txt 4K
+a hw3-2/ 0K
+a hw3-2/hw3q2seq.java 3K
+a hw3-2/hw3q2clu.java 4K
+a hw3-2/readme.txt 2K
+a hw3-3/ 0K
+a hw3-3/hw3q3clu.java 3K
+a hw3-3/hw3q3seq.java 2K
+a hw3-3/readme.txt 2K
+a hw3-4/ 0K
+a hw3-4/hw3q4seq.java 3K
+a hw3-4/hw3q4clu.java 6K
+a hw3-4/readme.txt 5K
+a hw3-5/ 0K
+a hw3-5/hw3q5clu.java 3K
+a hw3-5/hw3q5seq.java 3K
+a hw3-5/DNS algorithm explanation.pdf 43K
+a hw3-5/readme.txt 8K
+Mon May 02 18:29:28 [kxk2907@queeg:~/practice/parallel/hw3]vi submitted
+Mon May 02 18:29:38 [kxk2907@queeg:~/practice/parallel/hw3]uu
+

@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Test all forms of reading and writing a file.
+# TestAll expects a number in the range [0,7] to prescribe
+#   which forms to use, followed by the input and output file names.
+#
+# The aspect prepends two additional arguments: cipher key and encode/decode.
+
+PATH=/usr/local/versions/aspectj-1.6.2/bin:/usr/local/jdk/bin:$PATH
+CLASSPATH=/usr/local/versions/aspectj-1.6.2/lib/aspectjrt.jar:.
+export PATH CLASSPATH
+
+for method in 0 1 2 3 4 5 6 7 8; do
+    echo "encode, method $method"
+    if java -cp $CLASSPATH TestAll rabbit encode $method AliceChapter1.txt tempo.txt; then
+        if diff tempo.txt AliceChapter1.rabbit.txt > /dev/null 2>&1; then
+            echo "   success"
+        else
+            echo "   FAILURE"
+        fi
+    else
+        echo "   The program CRASHED."
+    fi
+
+    echo "decode, method $method"
+    if java -cp $CLASSPATH TestAll rabbit decode $method AliceChapter1.rabbit.txt tempo2.txt
+    then
+        if diff tempo2.txt AliceChapter1.txt > /dev/null 2>&1; then
+            echo "   success"
+        else
+            echo "   FAILURE"
+        fi
+    else
+        echo "   The program CRASHED."
+    fi
+
+    echo
+    /bin/rm tempo.txt tempo2.txt
+done
+

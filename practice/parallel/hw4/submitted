@@ -1,0 +1,21 @@
+Sun May 15 16:33:17 [kxk2907@queeg:~/practice/parallel/hw4]submit -v jmk-grd hw4                                                                                         *
+a hw4-1/ 0K
+a hw4-1/hw4q1seq.java 3K
+a hw4-1/hw4q1clu.java 5K
+a hw4-1/readme.txt 1K
+a hw4-2/ 0K
+a hw4-2/hw4q2seq.java 2K
+a hw4-2/hw4q2clu.java 7K
+a hw4-2/hw4q2input1.txt 1K
+a hw4-2/hw4q2input2.txt 34K
+a hw4-2/readme.txt 2K
+a hw4-3/ 0K
+a hw4-3/hw4q3seq.java 2K
+a hw4-3/hw4q3clu.java 2K
+a hw4-3/readme.txt 1K
+a hw4-4/ 0K
+a hw4-4/hw4q4seq.java 3K
+a hw4-4/hw4q4clu.java 5K
+a hw4-4/readme.txt 3K
+Sun May 15 16:33:23 [kxk2907@queeg:~/practice/parallel/hw4]
+

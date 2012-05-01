@@ -1,0 +1,418 @@
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.*;
+/**
+ * 
+ * @author Karthikeyan Karur Balu
+ *  Lab - 2 submission 
+ *	ViginereDecorator 
+ *	
+ *	The following code provides pointcuts and advises around the 
+ *	methods Reader and Writer. 
+ *
+ *	Methods advised : read(..), write(..),append(..),mark(..),reset(..)
+ *	Also the # of arguments in the main program as well advised to accept 4 arguments
+ *  
+ */
+public aspect VigenereDecorator {
+	static String keyword;
+	static String crypt;
+	static Integer counter = 0;
+	static Integer marker = 0;
+	static boolean reset = false;
+	static boolean marked = false;
+	/**
+	 * 
+	 * @param args
+	 * pointcut to modify # of arguments in the main
+	 */
+	pointcut executeMain(String[] args): 
+		execution(* TestAll.main(..)) &&
+		args(args);	
+	
+	/**
+	 * pointcut for the read method : Reader is captured here
+	 */
+	pointcut executeRead(): 
+		call(* read()) && 
+		target(Reader);
+	
+	/**
+	 * 
+	 * @param c : character to be written
+	 * pointcut for the wr.write(c) : Writer is captured here
+	 */
+	pointcut executeWrite(int c): 
+		call(* write(int)) && 
+		target(Writer) && 
+		args(c);
+	
+	/**
+	 * 
+	 * @param c
+	 * pointcut for the wr.append(c) : Writer is captured here
+	 */
+	pointcut executeAppend(char c) :
+		call(* append(char)) &&
+		target(Writer) &&
+		args(c);
+	
+	/**
+	 * 
+	 * @param cbuf
+	 * pointcut for the int rd.read(cbuf) : Reader is captured here
+	 */
+	pointcut executeReadCbuf(char[] cbuf):
+		call(* read(char[])) &&
+		target(Reader) &&
+		args(cbuf);
+	
+	/**
+	 * 
+	 * @param cbuf
+	 * pointcut for the int wr.write(cbuf) : Reader is captured here
+	 */
+	pointcut executeWriteCbuf(char[] cbuf):
+		call(* write(char[])) &&
+		target(Writer) &&
+		args(cbuf);
+	
+	/**
+	 * 
+	 * @param cbuf - character to be read
+	 * @param off  - starting point the char buffer
+	 * @param len  - length within the buffer to be read
+	 * 
+	 * pointcut for rd.read(cbuf,off,len) : Reader captured here 
+	 */
+	pointcut executeReadCbufOffLen(char[] cbuf,int off,int len):
+		call(* read(char[],int,int)) &&
+		target(Reader) &&
+		args(cbuf,off,len);
+	
+	/**
+	 * 
+	 * @param cbuf - character to be read
+	 * @param off  - starting point the char buffer
+	 * @param len  - length within the buffer to read
+	 * 
+	 * pointcut for wr.write(cbuf,off,len) : Writer captured here
+	 */
+	pointcut executeWriteCbufOffLen(char[] cbuf,int off,int len):
+		call(* write(char[],int,int)) &&
+		target(Writer) &&
+		args(cbuf,off,len);
+	
+	//CharBuffer
+	/**
+	 * @param CharBuffer - CharBuffer contains the sequence of characters
+	 * 
+	 * pointcut for rd.read(CharBuffer) : Reader captured here
+	 */
+	pointcut executeReadCharBuffer(CharBuffer target):
+		call(* read(CharBuffer)) &&
+		target(Reader) &&
+		args(target);
+	
+	/**
+	 * @param CharBuffer - CharBuffer contains the sequence of characters
+	 * 
+	 * pointcut for wr.append(CharBuffer) : Writer captured here
+	 */
+	pointcut executeAppendCharBuffer(CharSequence target) :
+		call(* append(CharSequence)) &&
+		target(Writer) &&
+		args(target);
+	
+	/**
+	 * 
+	 * @param target - CharSequence / CharBuffer contains the sequence of characters
+	 * @param off    - position of starting point in the buffer
+	 * @param len    - poistion of ending point in the buffer
+	 * 
+	 * pointcut for wr.append(target,off,len) : Writer captured here
+	 */
+	pointcut executeAppendCharBufferOffLen(CharSequence target,int off,int len) :
+		call(* append(CharSequence,int,int)) &&
+		target(Writer) &&
+		args(target,off,len);
+	
+	/**
+	 * 
+	 * @param cbuf - String to be read
+	 * 
+	 * pointcut for wr.write(cbuf) : Writer capturted here
+	 */
+	pointcut executeWriteString(String cbuf) :
+		call(* write(String)) &&
+		target(Writer) &&
+		args(cbuf);
+	
+	/**
+	 * 
+	 * @param cbuf	- String buffer
+	 * @param off   - starting point the string
+	 * @param len   - end point in the string
+	 * 
+	 * pointcut for wr.write(cbuf,off,len) : Writer captured here 
+	 */
+	pointcut executeWriteStringOffLen(String cbuf,int off,int len) :
+		call(* write(String,int,int)) &&
+		target(Writer) &&
+		args(cbuf,off,len);
+	
+	pointcut executeMark(int mark) :
+		call(* mark(int)) &&
+		target(Reader) &&
+		args(mark);
+ 	
+	pointcut executeReset():
+		call(* reset()) &&
+		target(Reader);
+	
+	void around(int c): executeWrite(c) && target(Writer)  && args(int){
+		if(crypt.equals("encode")) 
+			c = encoder(c);
+		else if (crypt.equals("decode")) {		
+		}
+		proceed(c);
+	}
+	
+	Writer around(Writer wr,char c) : executeAppend(c) && target(wr)  && args(char){
+		int ch = (int)c;
+		if(crypt.equals("encode")) {
+			ch = encoder(ch);
+		}
+		else if (crypt.equals("decode")) {		
+		}
+		c = (char)ch;
+		return proceed(wr,c);
+	}
+	
+	
+	int around(): executeRead() && target(Reader){
+		int c = proceed();
+		if (crypt.equals("decode")) {
+			c = decoder(c);
+		}
+		return c;
+	}
+	
+	int around(char[] cbuf) : executeReadCbuf(cbuf) && target(Reader) && args(char[]) {
+		int ret = proceed(cbuf);
+		if(crypt.equals("decode") && !marked && !reset) {
+			for(int i = 0;i<cbuf.length;i++) {
+				if((int)cbuf[i] == -1)
+					return -1;
+				cbuf[i] = (char)decoder((int)cbuf[i]);
+			}	
+		}
+		else if(crypt.equals("decode") && marked && !reset)
+			marked = false;
+		else if(crypt.equals("decode") && reset && !marked)
+			reset = false;
+		else if(crypt.equals("decode") && marked && reset) {
+			for(int i = 0;i<cbuf.length;i++) {
+				if((int)cbuf[i] == -1)
+					return -1;
+				cbuf[i] = (char)decoder((int)cbuf[i]);
+			}	
+		}
+		return ret;
+	}
+	
+	void around(char[] cbuf) : executeWriteCbuf(cbuf) && target(Writer) && args(char[]) {
+		char[] cbuf1 = new char[cbuf.length];
+		if(crypt.equals("encode")) {
+			for(int i = 0;i<cbuf.length;i++)
+				cbuf1[i] = (char)encoder((int)cbuf[i]);
+			proceed(cbuf1);
+		}
+		else if(crypt.equals("decode")) {
+			proceed(cbuf);
+		}
+	}
+	
+	int around(char[] cbuf,int off,int len) : executeReadCbufOffLen(cbuf,off,len) && target(Reader) && args(char[],int,int) {
+		int ret = proceed(cbuf,off,len);
+		if(crypt.equals("decode")) {
+			for(int i = 0;i<len;i++) {
+				if((int)cbuf[off] == -1)
+					return -1;
+				cbuf[i + off] = (char)decoder((int)cbuf[i + off]);
+			}	
+		}	
+		return ret;
+	}
+	
+	void around(char[] cbuf,int off,int len) : executeWriteCbufOffLen(cbuf,off,len) && target(Writer) && args(char[],int,int) {
+		char[] cbuf1 = new char[cbuf.length];
+		for(int i = 0;i<cbuf.length;i++) 
+			cbuf1[i] = cbuf[i];
+		if(crypt.equals("encode")) {
+			for(int i = 0;i<len;i++)
+				cbuf1[i + off] = (char)encoder((int)cbuf[i + off]);
+			proceed(cbuf1,off,len);
+		}
+		else if(crypt.equals("decode")) {
+			proceed(cbuf,off,len);
+		}
+	}
+	
+	void around(String[] args): executeMain(args) {
+		String[] local = new String[args.length];
+		for(int i = 0;i<local.length;i++) 
+			local[i] = args[i];
+		keyword = local[0];
+		crypt = local[1];
+		args = new String[local.length - 2];
+		for(int i = 0;i<args.length;i++) {
+			args[i] = local[i+2];
+		}
+		proceed(args);
+	}
+	
+	
+	
+	void around(String cbuf): executeWriteString(cbuf) && target(Writer)  && args(String){
+		if(crypt.equals("encode"))  {
+			char[] temp = new char[cbuf.length()];
+			for(int i = 0;i<cbuf.length();i++) {
+				temp[i] = cbuf.charAt(i);
+				temp[i] = (char) encoder((int)temp[i]);
+			}
+			cbuf = new String(temp);
+		}
+		else if (crypt.equals("decode")) {		
+		}
+		proceed(cbuf);
+	}
+	
+	void around(String cbuf,int off,int len): executeWriteStringOffLen(cbuf,off,len) && target(Writer)  && args(String,int,int){
+		if(crypt.equals("encode"))  {
+			char[] temp = new char[cbuf.length()];
+			for(int i = 0;i<len;i++) {
+				temp[i + off] = cbuf.charAt(i + off);
+				temp[i + off] = (char) encoder((int)temp[i + off]);
+			}
+			cbuf = new String(temp);
+		}
+		else if (crypt.equals("decode")) {		
+		}
+		proceed(cbuf,off,len);
+	}
+	
+	int around(CharBuffer target) : executeReadCharBuffer(target) && target(Reader) && args(CharBuffer) {
+		int ret = proceed(target);
+		return ret;
+	}
+	
+	Writer around(Writer wr,CharSequence target) : executeAppendCharBuffer(target) && target(wr) && args(CharSequence) {
+		if(crypt.equals("encode")) {
+			CharBuffer local = (CharBuffer) target;
+			for(int i = 0;i<target.length();i++) {
+				local.array()[i] = (char) encoder(local.array()[i]);
+			}
+			target = local;
+		}
+		else if (crypt.equals("decode")) {	
+			CharBuffer local = (CharBuffer) target;
+			for(int i = 0;i<target.length();i++) {
+				local.array()[i] = (char) decoder(local.array()[i]);
+			}
+			target = local;
+		}
+		return proceed(wr,target);
+	}
+	
+	Writer around(Writer wr,CharSequence target,int off,int len) : executeAppendCharBufferOffLen(target,off,len) && target(wr) && args(CharSequence,int,int) {
+		if(crypt.equals("encode")) {
+			for(int i = off;i< len ;i++) 
+				((CharBuffer)target).array()[i] = (char) encoder(((CharBuffer)target).array()[i]);
+		}
+		else if (crypt.equals("decode")) {	
+			for(int i = off;i< len ;i++) 
+				((CharBuffer)target).array()[i] = (char) decoder(((CharBuffer)target).array()[i]);
+		}
+		return proceed(wr,target,off,len);
+	}
+	
+	void around(int mark): executeMark(mark) && target(Reader) && args(int) {
+		marker = mark;
+		marked = true;
+		proceed(mark);
+	}
+	
+	void around(): executeReset() && target(Reader) {
+		//counter = marker;
+		reset = true;
+		proceed();
+	}
+	
+	/**
+	 * 
+	 * @param c - Input character to be encoded 
+	 * @return  - encoded character
+	 * 
+	 * Logic : 1. Get the character 
+	 * 		   2. Check the case 
+	 * 		   3. find the position of the keyword. 
+	 * 		   4. final c = c + keywordCharacter
+	 *         5. return c
+	 */
+	public static int decoder(int c) {
+		if(c >= 65 && c<= 90) {
+			int c2 = keyword.toUpperCase().charAt(counter % keyword.length());
+			c = (c - 65) - (c2 - 65);
+			while( c < 0)
+ 				c = c + 26;
+			c = c % 26;
+			c = c + 65;
+		}
+		else if(c >= 97 && c <= 122) {
+			int c2 = keyword.toLowerCase().charAt(counter % keyword.length());
+			c = (c - 97) - (c2 - 97);
+			while( c < 0)
+				c = c + 26;
+			c = c % 26;
+			c = c + 97;
+		}
+		counter ++;
+		if(c == 13)
+			counter --;
+		return c;
+	}
+	
+	/**
+	 * 
+	 * @param c - Input character to be decoded
+	 * @return  - decoded character
+	 * 
+	 * Logic : 
+	 * 			1. Get the character
+	 * 			2. Check for case
+	 * 			3. Get the keyword and Character at (i)
+	 * 			4. convert the character c = (c - c2) mod 26
+	 * 			5. return c; 
+	 */
+	public static int encoder(int c) {
+		if(c >= 65 && c<= 90) {
+			int c2 = keyword.toUpperCase().charAt(counter % keyword.length());
+			c = (c2 - 65) + (c - 65);
+			c = c % 26;
+			c = c + 65;
+		}
+		else if(c >= 97 && c <= 122) {
+			int c2 = keyword.toLowerCase().charAt(counter % keyword.length());
+			c = (c2 - 97) + (c - 97);
+			c = c % 26;
+			c = c + 97;
+		}
+		counter ++;
+		if(c == 13)
+			counter --;
+		return c;
+	}
+}
+
+
