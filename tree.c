@@ -36,6 +36,7 @@ void arraytotree(struct node **, int[],int,int);
 void symmetricstructure(struct node *);
 int diameter(struct node *);
 int height(struct node *);
+int isBalanced(struct node *);
 
 //stack
 void push(struct stack **,int);
@@ -145,6 +146,20 @@ int height(struct node *root) {
 			return hr + 1;
 	}
 	return 0;
+}
+
+int isBalanced(struct node *root) {
+        int lh, rh;
+        if(root == NULL)
+                return 1;
+        lh = height(root->left);
+        rh = height(root->right);
+
+        if(isBalanced(root->left) &&
+                isBalanced(root->right) &&
+                abs(lh - rh) <= 1)
+                return 1;
+        return 0;
 }
 
 void inorderstack(struct node *root, struct stack **head) {
